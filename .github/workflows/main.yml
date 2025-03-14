@@ -7,8 +7,8 @@ on:
       - master
  
 jobs:
-  checkmarx_scan:
-    runs-on: ubuntu-latest
+ build:
+    runs-on: ubuntu-latest   
     steps:
       - name: Checkmarx AST Github Action
         uses: Checkmarx/ast-github-action@2.0.23
