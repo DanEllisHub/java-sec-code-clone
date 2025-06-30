@@ -71,7 +71,28 @@ public class AntObjectInputStream extends ObjectInputStream {
         System.out.println(objectFromDisk.name);
         ois.close();
     }
+    public static void main(String args[]) throws Exception{
+        // 定义myObj对象
+        MyObject myObj = new MyObject();
+        myObj.name = "world";
 
+        // 创建一个包含对象进行反序列化信息的/tmp/object数据文件
+        FileOutputStream fos = new FileOutputStream("/tmp/object");
+        ObjectOutputStream os = new ObjectOutputStream(fos);
+
+        // writeObject()方法将myObj对象写入/tmp/object文件
+        os.writeObject(myObj);
+        os.close();
+
+        // 从文件中反序列化obj对象
+        FileInputStream fis = new FileInputStream("/tmp/object");
+        AntObjectInputStream ois = new AntObjectInputStream(fis);  // AntObjectInputStream class
+
+        //恢复对象即反序列化
+        MyObject objectFromDisk = (MyObject)ois.readObject();
+        System.out.println(objectFromDisk.name);
+        ois.close();
+    }
     static class  MyObject implements Serializable {
         public String name;
     }
