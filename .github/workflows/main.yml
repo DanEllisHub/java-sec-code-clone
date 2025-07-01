@@ -15,7 +15,6 @@ jobs:
         with:
          repository: DanEllisHub/sec-test-2
          path: sec-test-2
-         ref: main
       - name: Checkmarx AST Github Action
         uses: Checkmarx/ast-github-action@2.0.23
         with:
